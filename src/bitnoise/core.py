@@ -49,11 +49,10 @@ def reverb(buffer):
 	comb2 = comb(buffer, 0.683, 3599)
 	comb3 = comb(buffer, 0.765, 3399)
 	comb4 = comb(buffer, 0.517, 3801)
-
 	comb_result = [(comb1[i] + comb2[i] + comb3[i] + comb4[i])/4.0 for i in range(len(buffer))]
+
 	allpass1 = all_pass(comb_result, 0.7, 1051)
 	allpass2 = all_pass(allpass1, 0.7, 337)
-
 	return allpass2
 
 
@@ -63,7 +62,6 @@ def write_buffer_to_wav(buffer, fname):
 	max_sample = 2**(sample_width*8 - 1) - 1
 
 	f = wave.open(fname, 'wb')
-
 	f.setnchannels(num_channels)
 	f.setsampwidth(sample_width)
 	f.setframerate(SAMPLE_RATE)
@@ -106,17 +104,12 @@ def note_to_hz(note):
 		octave = int(note[1])
 
 	key_number = notes.index(note[0:-1]) + ((octave-1) * 12) + 1
-	
-
 	if key_number < 3:
 		key_number += 12
-
-	hz = 440 * pow(2, (key_number-49) / 12)
-
 	if octave == 0:
-		hz /= 2.0
-	
-	return hz
+		key_number -= 12
+
+	return 440 * pow(2, (key_number-49) / 12)
 
 
 def scale(notes):
