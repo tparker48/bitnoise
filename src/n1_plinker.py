@@ -16,7 +16,6 @@ NUM_SAMPLES = NUM_SECONDS * SAMPLE_RATE
 
 hi_scale = scale(['E4', 'D4', 'A4', 'G4', 'E3', 'D3', 'A3', 'G3'])
 lo_scale = scale(['E0', 'E1'])
-lo_scale[0]/=2
 
 # audio output buffers
 chord_out = []
