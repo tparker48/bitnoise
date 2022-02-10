@@ -17,7 +17,7 @@ def saw(i, freq):
     return value
 
 
-def rand(i, freq):
+def noise(i, freq):
 	return random.random()*2.0 - 1.0
 
 

@@ -37,7 +37,7 @@ lfo = Oscillator(saw)
 lfo.set_hz(5)
 
 # noise
-noise = Oscillator(rand)
+noise = Oscillator(noise)
 
 # low pass filter 4 noise
 fnoise = Filter()
