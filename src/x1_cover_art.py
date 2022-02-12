@@ -1,15 +1,15 @@
 import math
 import time
 
-SAMPLE_RATE = 30
-DURATION = 15
+SAMPLE_RATE = 40
+DURATION = 1500
 SECONDS_PER_SAMPLE = 1.0/SAMPLE_RATE
 NUM_SAMPLES = DURATION * SAMPLE_RATE
 CONSTANT_DELTA = 2*math.pi / SAMPLE_RATE
 
 WIDTH = 60
 STAMP = '     BITNOISE     '
-EMT = ' '*(WIDTH-5)
+EMT = '||'*(WIDTH-15)
 
 def sin(t, freq):
     raw_sin = math.sin(t * freq * CONSTANT_DELTA)
@@ -21,9 +21,9 @@ def sin(t, freq):
 def paint(canvas, brush, x):
     return canvas[:x] + brush + canvas[x + len(brush):]
 
-
-f1 = 0.15
-f2 = 0.6
+#fs=30
+f1 = 0.05#0.15
+f2 = 1.5#0.6
 
 prefix = ' ' * 50
 for t in range(int(NUM_SAMPLES)):
@@ -38,7 +38,7 @@ for t in range(int(NUM_SAMPLES)):
         
         #c1 = paint(c1, '  ', x1)
         #c1 = paint(c1, ' ', x2)
-        c1 = paint(c1, '/              \\', x3)
+        c1 = paint(c1, '/                          \\', x3-5)
     
     #c1 = paint(c1, STAMP, int(WIDTH/8))
 
