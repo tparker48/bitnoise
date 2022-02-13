@@ -27,10 +27,11 @@ class Scheduler:
         end_sample = int(self.samples_per_tick * ((start_beat + num_beats) * self.ticks_per_beat))
 
         for t in range(start_sample, min(end_sample, self.num_samples), samples_per_call):
-            if t not in self.schedule:
-                self.schedule[t] = [process]
-            else:
+            if t in self.schedule:
                 self.schedule[t].append(process)
+            else:
+                self.schedule[t] = [process]
+                
 
         return
     

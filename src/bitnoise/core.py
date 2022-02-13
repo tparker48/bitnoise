@@ -16,6 +16,9 @@ def saw(i, freq):
     value = math.atan(math.tan(float(freq) * (float(i) * FIXED_DELTA)))
     return value
 
+def tri(i, freq):
+	return 2 / pi * math.asin(math.sin(freq * i * FIXED_DELTA))
+
 
 def noise(i, freq):
 	return random.random()*2.0 - 1.0
@@ -84,7 +87,22 @@ def saturate(value):
 
 
 def apply_gain(value, gain_amt):
+	if type(value) == list:
+		for i in range(len(value)):
+			value[i] *= gain_amt
+		return value
 	return value * gain_amt
+
+
+def mix_buffers(buffers):
+	nBuffers = len(buffers)
+	output = []
+	for i in range(len(buffers[0])):
+		output.append(0.0)
+		for buffer in buffers:
+			output[i] += buffer[i]
+		output[i] /= nBuffers
+	return output
 
 
 def mix_buffer(input1, input2, mix):
