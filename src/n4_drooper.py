@@ -3,8 +3,6 @@ no. 4
  * more scheduler
 '''
 
-from doctest import master
-import sched
 from bitnoise.core import *
 from bitnoise.filter import Filter
 from bitnoise.oscillator import Oscillator

@@ -2,8 +2,8 @@ from bitnoise.core import *
 
 class Filter:
 	def __init__(self):
-		self.buf0 = 0.5
-		self.buf1 = 0.5
+		self.buf0 = 0.0000
+		self.buf1 = 0.0000
 	
 	def filter_sample(self, inp, f, q):
 		fb = q + q/(1.0 - f)
