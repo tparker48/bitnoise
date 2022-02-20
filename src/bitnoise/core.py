@@ -23,6 +23,15 @@ def tri(i, freq):
 def noise(i, freq):
 	return random.random()*2.0 - 1.0
 
+def linear_interpolate(buffer, sample):
+	lo = int(sample)
+	hi = lo+1
+	percent_hi = sample-lo
+
+	if lo >= len(buffer) or hi >= len(buffer):
+		return buffer[len(buffer)-1]
+	return (1.0-percent_hi)*buffer[lo] + (percent_hi)*buffer[hi]
+
 
 def comb(buffer, g, M):
 	output = [0.0]*len(buffer)
