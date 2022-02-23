@@ -16,12 +16,14 @@ def saw(i, freq):
     value = math.atan(math.tan(float(freq) * (float(i) * FIXED_DELTA)))
     return value
 
+
 def tri(i, freq):
 	return 2 / pi * math.asin(math.sin(freq * i * FIXED_DELTA))
 
 
 def noise(i, freq):
 	return random.random()*2.0 - 1.0
+
 
 def linear_interpolate(buffer, sample):
 	lo = int(sample)
@@ -55,6 +57,7 @@ def all_pass(buffer, g, M):
 			output[i] = (-g*buffer[i]) + buffer[i-M] + (g*output[i-M])
 	
 	return output
+
 
 def reverb(buffer):
 	comb1 = comb(buffer, 0.762, 2599)

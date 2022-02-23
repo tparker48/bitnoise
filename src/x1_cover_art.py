@@ -11,19 +11,19 @@ WIDTH = 60
 STAMP = '     BITNOISE     '
 EMT = '||'*(WIDTH-15)
 
+
 def sin(t, freq):
     raw_sin = math.sin(t * freq * CONSTANT_DELTA)
     adjusted = (raw_sin + 1.0) / 2.0
     x_value = int(adjusted * WIDTH)
     return x_value
 
-
 def paint(canvas, brush, x):
     return canvas[:x] + brush + canvas[x + len(brush):]
 
-#fs=30
-f1 = 0.05#0.15
-f2 = 1.5#0.6
+
+f1 = 0.05
+f2 = 1.5
 
 prefix = ' ' * 50
 for t in range(int(NUM_SAMPLES)):
@@ -35,15 +35,8 @@ for t in range(int(NUM_SAMPLES)):
         x1 = int(0.5*(sin(t+i, f1) + sin(t, f1*8)))
         x2 = sin(t+i*2, f2)
         x3 = int(0.5*(x1+x2))
-        
-        #c1 = paint(c1, '  ', x1)
-        #c1 = paint(c1, ' ', x2)
         c1 = paint(c1, '/                          \\', x3-5)
-    
-    #c1 = paint(c1, STAMP, int(WIDTH/8))
 
     print(prefix + c1)
-
     e = time.time()
-
     time.sleep(SECONDS_PER_SAMPLE - (s-e))

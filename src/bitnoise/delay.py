@@ -14,8 +14,9 @@ class Delay:
 		for sample in range(len(buffer)):
 			pre_delay_in = buffer[sample]
 			buffer[sample] = (1.0-self.wet)*pre_delay_in + self.wet*delay_buffer[sample % delay_buffer_len]
-			delay_buffer[sample % delay_buffer_len] += pre_delay_in
 			delay_buffer[sample % delay_buffer_len] *= self.feedback
+			delay_buffer[sample % delay_buffer_len] += pre_delay_in
+			
 			
 
 class TapeDelay:
